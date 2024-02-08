@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://here-is-written-a-serious-username.github.io/Test-Hulo-dev",
+  "homepage": "https://here-is-written-a-serious-username.github.io/Test-Hulo.dev",
   "scripts": {
     "start": "parcel src/*.html -p 8888",
-    "build": "parcel build src/*.html --public-url /Test-Hulo-dev/"
+    "build": "parcel build src/*.html --public-url /Test-Hulo.dev/"
   },
   "repository": {
     "type": "git",
