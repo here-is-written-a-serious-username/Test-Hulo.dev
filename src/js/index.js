@@ -15,12 +15,12 @@ const sliderMain = new Splide(sliderMainElm, {
     drag: 'free',
     speed: SLIDE_SPEED,
     gap: '2rem',
-    padding: '2rem',
+    padding: '1.8rem',
     autoplay: true,
     interval: 6000,
     pauseOnHover: true,
     pauseOnFocus: true,
-    keyboard: 'global',
+    keyboard: true,
 }).mount();
 
 
@@ -30,6 +30,8 @@ const sliderModal = new Splide(sliderModalElm, {
     type: 'fade',
     rewind: true,
     speed: SLIDE_SPEED,
+    drag: 'free',
+    keyboard: true,
 }).mount();
 
 
@@ -54,5 +56,8 @@ MicroModal.init({
         sliderModal.options = {
             speed: SLIDE_SPEED
         };
+        // let iframe = document.querySelector('iframe');
+        // let player = new Player(iframe);
+        // player.play();
     }
 });
