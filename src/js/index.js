@@ -36,16 +36,21 @@ const sliderModal = new Splide(sliderModalElm, {
 
 
 // слухачі для фіксації індексу відкритого слайду-відео
+let iframe = document.querySelectorAll('.vimeo-player');
+let slideIndex = null;
+let player = null;
+
 const modalButtons = document.querySelectorAll('.gallery-btn');
 modalButtons.forEach(modalButton => {
     modalButton.addEventListener('click', (event) => {
         event.preventDefault()
-        sliderMainElm.dataset.showIndex = modalButton.dataset.index;
-        console.log(`Відкритий слайд-відео під індексом - ${sliderMainElm.dataset.showIndex}`)
+        slideIndex = modalButton.dataset.index;
+        console.log(`Відкритий слайд-відео під індексом № ${slideIndex}`)
+
+        player = new Player(iframe[Number(slideIndex)]);
     });
 });
 
-let iframe = document.querySelectorAll('.vimeo-player');
 
 // модальне вікно
 MicroModal.init({
@@ -53,16 +58,13 @@ MicroModal.init({
         sliderModal.options = {
             speed: 0
         };
-        sliderModal.go(Number(sliderMainElm.dataset.showIndex));
+        sliderModal.go(Number(slideIndex));
         sliderModal.options = {
             speed: SLIDE_SPEED
         };
-
-        let player = new Player(iframe[Number(sliderMainElm.dataset.showIndex)]);
         player.play();
     },
-    // onClose: () => {
-    //     let player = new Player(iframe[Number(sliderMainElm.dataset.showIndex)]);
-    //     player.getPaused();
-    // },
+    onClose: () => {
+        player.pause();
+    },
 });
