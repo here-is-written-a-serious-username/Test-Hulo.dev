@@ -45,6 +45,7 @@ modalButtons.forEach(modalButton => {
     });
 });
 
+let iframe = document.querySelectorAll('.vimeo-player');
 
 // модальне вікно
 MicroModal.init({
@@ -56,8 +57,12 @@ MicroModal.init({
         sliderModal.options = {
             speed: SLIDE_SPEED
         };
-        // let iframe = document.querySelector('iframe');
-        // let player = new Player(iframe);
-        // player.play();
-    }
+
+        let player = new Player(iframe[Number(sliderMainElm.dataset.showIndex)]);
+        player.play();
+    },
+    // onClose: () => {
+    //     let player = new Player(iframe[Number(sliderMainElm.dataset.showIndex)]);
+    //     player.getPaused();
+    // },
 });
